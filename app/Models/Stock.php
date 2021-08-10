@@ -19,4 +19,9 @@ class Stock extends Model
     {
         return $this->belongsTo('App\Industry');
     }    
+
+    public function daily_prices()
+    {
+        return $this->hasMany('App\DailyPrice');
+    }    
 }
