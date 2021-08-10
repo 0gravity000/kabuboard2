@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\StockController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\CrapIndex;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +23,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/dashboard-notlogin', [StockController::class, 'index'])->name('dashboard-notlogin');
+/*
 Route::get('/dashboard-notlogin', function () {
     return view('dashboard-notlogin');
 })->name('dashboard-notlogin');
+*/
 
 require __DIR__.'/auth.php';

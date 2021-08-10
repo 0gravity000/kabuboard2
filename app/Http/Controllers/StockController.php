@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Stock;
+use App\Models\Market;
+use App\Models\Industry;
+use Goutte;
+
 class StockController extends Controller
 {
     /**
@@ -11,9 +16,19 @@ class StockController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function apitest()
     {
         //
+        $msg = "api test message!";
+        return $msg;
+    }
+
+     public function index()
+    {
+        //
+        $stocks = Stock::all();
+        //return $stocks;
+        return view('dashboard-notlogin', compact('stocks'));
     }
 
     /**
