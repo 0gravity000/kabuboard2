@@ -19,15 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/*
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
-
-Route::get('/dashboard-notlogin', [StockController::class, 'index'])->name('dashboard-notlogin');
-/*
-Route::get('/dashboard-notlogin', function () {
-    return view('dashboard-notlogin');
-})->name('dashboard-notlogin');
-*/
+ */
+Route::get('/dashboard', [StockController::class, 'index'])->name('dashboard');
 
 require __DIR__.'/auth.php';

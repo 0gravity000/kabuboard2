@@ -28,7 +28,7 @@ class StockController extends Controller
         //
         $stocks = Stock::all();
         //return $stocks;
-        return view('dashboard-notlogin', compact('stocks'));
+        return view('dashboard', compact('stocks'));
     }
 
     /**

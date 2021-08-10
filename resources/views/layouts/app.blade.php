@@ -18,7 +18,11 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+            @auth
+                @include('layouts.navigation')
+            @else
+                @include('layouts.navigation-notlogin')
+            @endauth
 
             <!-- Page Heading -->
             <header class="bg-white shadow">
