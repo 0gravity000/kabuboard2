@@ -21,4 +21,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/dashboard-notlogin', function () {
+    return view('dashboard-notlogin');
+})->name('dashboard-notlogin');
+
 require __DIR__.'/auth.php';
