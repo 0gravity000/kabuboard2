@@ -15,7 +15,7 @@ class DailyVolumeController extends Controller
     public function index()
     {
         //
-        $dailyvolumes = DailyVolume::all();
+        $dailyvolumes = DailyVolume::paginate(100);
         return view('dailyvolume', compact('dailyvolumes'));
     }
 

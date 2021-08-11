@@ -14,6 +14,8 @@
           <th scope="col">安値</th>
           </tr>
      </thead>
+
+     {{ $dailyprices->links() }}
      <tbody>
           @foreach($dailyprices as $dailyprice)
           <tr>

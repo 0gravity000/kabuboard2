@@ -9,6 +9,8 @@
           <th scope="col">出来高</th>
           </tr>
      </thead>
+
+     {{ $dailyvolumes->links() }}
      <tbody>
           @foreach($dailyvolumes as $dailyvolume)
           <tr>
