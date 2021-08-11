@@ -12,16 +12,16 @@ class Stock extends Model
 
     public function market()
     {
-        return $this->belongsTo('App\Market');
+        return $this->belongsTo('App\Models\Market');
     }
 
     public function industry()
     {
-        return $this->belongsTo('App\Industry');
+        return $this->belongsTo('App\Models\Industry');
     }    
 
     public function daily_prices()
     {
-        return $this->hasMany('App\DailyPrice');
+        return $this->hasMany('App\Models\DailyPrice');
     }    
 }

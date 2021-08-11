@@ -12,6 +12,6 @@ class Industry extends Model
 
     public function stocks()
     {
-        return $this->hasMany('App\Stock');
+        return $this->hasMany('App\Models\Stock');
     }    
 }

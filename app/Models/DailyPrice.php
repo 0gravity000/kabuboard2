@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class DailyPrice extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 
     public function stock()
     {
-        return $this->belongsTo('App\Stock');
+        return $this->belongsTo('App\Models\Stock');
     }
 }

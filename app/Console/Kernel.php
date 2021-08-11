@@ -6,6 +6,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 use App\Events\DialyMeigarasCheck;
+use App\Events\DialyStocksCheck;
 
 class Kernel extends ConsoleKernel
 {
@@ -26,6 +27,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->call(function () {
+            event(new DialyStocksCheck());
+        })->dailyAt('15:30');
+
         $schedule->call(function () {
             event(new DialyMeigarasCheck());
         })->dailyAt('17:10');

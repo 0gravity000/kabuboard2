@@ -5,8 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\DailyPrice;
 use Illuminate\Http\Request;
 
+use App\Models\Stock;
+use App\Models\Market;
+use App\Models\Industry;
+use Goutte;
+use Illuminate\Support\Facades\Log;
+
 class DailyPriceController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
