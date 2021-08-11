@@ -100,7 +100,7 @@ class ScrapingDailySocksToDB
 
             //DB登録 daily_stocksテーブル
             //同日のstock_idが存在していたら上書き、なければ新規作成
-            $date = date('yy-m-d'); //当日中　15:00-23:59の間にこの処理を実行する
+            $date = date('Y-m-d'); //当日中　15:00-23:59の間にこの処理を実行する
             $daily_stocks_buf = DailyPrice::updateOrCreate(
                 ['stock_id' => $stock->id, 'date' => $date],
                 [
