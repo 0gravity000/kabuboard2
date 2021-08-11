@@ -24,4 +24,9 @@ class Stock extends Model
     {
         return $this->hasMany('App\Models\DailyPrice');
     }    
+
+    public function daily_volumes()
+    {
+        return $this->hasMany('App\Models\DailyVolume');
+    }    
 }

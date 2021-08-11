@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
 use App\Models\DailyPrice;
+use App\Models\DailyVolume;
 use App\Models\Stock;
 use App\Models\Market;
 use App\Models\Industry;
@@ -111,7 +112,15 @@ class ScrapingDailySocksToDB
                     'lowest_price' => floatval(str_replace(',','',$lowest_price)),
                 ]
             ); 
-            //$daily_stocks->volume = floatval(str_replace(',','',$volume));
+
+            //DB登録 daily_volumesテーブル
+            $daily_volumes_buf = DailyVolume::updateOrCreate(
+                ['stock_id' => $stock->id, 'date' => $date],
+                [
+                    'volume' => floatval(str_replace(',','',$volume)),
+                ]
+            ); 
+
         }   //stocks分ループ END
         Log::info('finish ScrapingDailySocksToDB.php.php');
     }
