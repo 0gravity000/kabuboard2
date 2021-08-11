@@ -31,4 +31,6 @@ Route::get('/dashboard', [StockController::class, 'index'])->name('dashboard');
 Route::get('/dailyprice', [DailyPriceController::class, 'index'])->name('dailyprice');
 Route::get('/dailyvolume', [DailyVolumeController::class, 'index'])->name('dailyvolume');
 
+Route::get('/debug', [DailyPriceController::class, 'debug'])->name('debug');
+
 require __DIR__.'/auth.php';

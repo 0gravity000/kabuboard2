@@ -122,6 +122,6 @@ class ScrapingDailySocksToDB
             ); 
 
         }   //stocks分ループ END
-        Log::info('finish ScrapingDailySocksToDB.php.php');
+        Log::info('finish ScrapingDailySocksToDB.php');
     }
 }

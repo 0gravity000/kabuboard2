@@ -21,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\DialyStocksCheck' => [
             'App\Listeners\ScrapingDailySocksToDB',
         ],
+        'App\Events\DialyExtraStocksCheck' => [
+            'App\Listeners\DeleteDailyExtraDBSocks',
+        ],
         /*
         Registered::class => [
             SendEmailVerificationNotification::class,
