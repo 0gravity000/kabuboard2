@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\DailyPriceController;
+use App\Http\Controllers\DailyVolumeController;
 
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\CrapIndex;
@@ -28,5 +29,6 @@ Route::get('/dashboard', function () {
  */
 Route::get('/dashboard', [StockController::class, 'index'])->name('dashboard');
 Route::get('/dailyprice', [DailyPriceController::class, 'index'])->name('dailyprice');
+Route::get('/dailyvolume', [DailyVolumeController::class, 'index'])->name('dailyvolume');
 
 require __DIR__.'/auth.php';

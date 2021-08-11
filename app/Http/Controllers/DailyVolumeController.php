@@ -2,18 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DailyPrice;
+use App\Models\DailyVolume;
 use Illuminate\Http\Request;
 
-use App\Models\Stock;
-use App\Models\Market;
-use App\Models\Industry;
-use Goutte;
-use Illuminate\Support\Facades\Log;
-
-class DailyPriceController extends Controller
+class DailyVolumeController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -22,8 +15,8 @@ class DailyPriceController extends Controller
     public function index()
     {
         //
-        $dailyprices = DailyPrice::all();
-        return view('dailyprice', compact('dailyprices'));
+        $dailyvolumes = DailyVolume::all();
+        return view('dailyvolume', compact('dailyvolumes'));
     }
 
     /**
@@ -50,10 +43,10 @@ class DailyPriceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DailyPrice  $dailyPrice
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(DailyPrice $dailyPrice)
+    public function show($id)
     {
         //
     }
@@ -61,10 +54,10 @@ class DailyPriceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DailyPrice  $dailyPrice
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(DailyPrice $dailyPrice)
+    public function edit($id)
     {
         //
     }
@@ -73,10 +66,10 @@ class DailyPriceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\DailyPrice  $dailyPrice
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DailyPrice $dailyPrice)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -84,10 +77,10 @@ class DailyPriceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DailyPrice  $dailyPrice
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DailyPrice $dailyPrice)
+    public function destroy($id)
     {
         //
     }
