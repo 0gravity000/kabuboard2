@@ -22,8 +22,12 @@ class DailyPriceController extends Controller
     public function index()
     {
         //
+        $dailyprices = DailyPrice::all();
+        $uniquedDates = $dailyprices->unique('date');   //キャメルケースOK、スネークケース、パスカルケースNG
+        //dd($uniquedDates);
+        $dailyprices = DailyPrice::all();
         $dailyprices = DailyPrice::paginate(100);
-        return view('dailyprice', compact('dailyprices'));
+        return view('dailyprice', compact('dailyprices','uniquedDates'));
     }
 
     /**
