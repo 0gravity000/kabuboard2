@@ -15,8 +15,12 @@ class DailyVolumeController extends Controller
     public function index()
     {
         //
+        $dailyvolumes = DailyVolume::all();
+        $uniquedDates = $dailyvolumes->unique('date');   //キャメルケースOK、スネークケース、パスカルケースNG
+        //dd($uniquedDates);
+        $dailyvolumes = DailyVolume::all();
         $dailyvolumes = DailyVolume::paginate(100);
-        return view('dailyvolume', compact('dailyvolumes'));
+        return view('dailyvolume', compact('dailyvolumes','uniquedDates'));
     }
 
     /**
