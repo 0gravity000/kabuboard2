@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function () {   //処理時間：30分くらい
             event(new DialyStocksCheck());
-        })->dailyAt('15:30');
+        })->weekdays()->at('15:30');
 
         $schedule->call(function () {
             event(new DialyMeigarasCheck());
