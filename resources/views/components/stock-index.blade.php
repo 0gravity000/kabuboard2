@@ -10,7 +10,7 @@
                     $market_count = $stocks->where('market_id', $uniquedMarketId->market_id)->count();
                     @endphp
                     <li>
-                         <a href="/dashboard/show/markets/{{$uniquedMarketId->id}}">
+                         <a href="/dashboard/show/markets/{{$uniquedMarketId->market_id}}">
                               {{$uniquedMarketId->market->name}} 
                               ( {{$market_count}} )
                          </a>
@@ -23,7 +23,7 @@
                     $industry_count = $stocks->where('industry_id', $uniquedIndustryId->industry_id)->count();
                     @endphp
                     <li>
-                         <a href="/dashboard/show/industries/{{$uniquedIndustryId->id}}">
+                         <a href="/dashboard/show/industries/{{$uniquedIndustryId->industry_id}}">
                               {{$uniquedIndustryId->industry->name}}
                               ( {{$industry_count}} )
                          </a>

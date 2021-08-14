@@ -28,8 +28,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
  */
 Route::get('/dashboard', [StockController::class, 'index'])->name('dashboard');
-Route::get('/dashboard/show/markets/{id}', [StockController::class, 'show_markets'])->name('dashboard_markets');
-Route::get('/dashboard/show/industries/{id}', [StockController::class, 'show_industries'])->name('dashboard_industries');
+Route::get('/dashboard/show/markets/{marketid}', [StockController::class, 'show_markets'])->name('dashboard_markets');
+Route::get('/dashboard/show/industries/{industryid}', [StockController::class, 'show_industries'])->name('dashboard_industries');
 
 Route::get('/dailyprice', [DailyPriceController::class, 'index'])->name('dailyprice');
 Route::get('/dailyvolume', [DailyVolumeController::class, 'index'])->name('dailyvolume');
