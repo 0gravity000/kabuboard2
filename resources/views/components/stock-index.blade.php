@@ -1,13 +1,26 @@
-@props(['stocks'])
+@props(['stocks','uniquedMarketIds','uniquedIndustryIds'])
 
 <div class="container">
      <div class="row align-items-start">
           <div class="col-2">
                <ul>
                     <ul>市場</ul>
-                    <li></li>
+                    @foreach($uniquedMarketIds as $uniquedMarketId)
+                    <li>
+                         <a href="/dashboard/show/markets/{{$uniquedMarketId->id}}">
+                              {{$uniquedMarketId->market->name}} 
+                         </a>
+                    </li>
+                    @endforeach
                  
                     <ul>業種</ul>
+                    @foreach($uniquedIndustryIds as $uniquedIndustryId)
+                    <li>
+                         <a href="/dashboard/show/industries/{{$uniquedIndustryId->id}}">
+                              {{$uniquedIndustryId->industry->name}}
+                         </a>
+                    </li>
+                    @endforeach
                 </ul>
 
           </div>

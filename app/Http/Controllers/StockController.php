@@ -27,8 +27,9 @@ class StockController extends Controller
     {
         //
         $stocks = Stock::all();
-        //return $stocks;
-        return view('dashboard', compact('stocks'));
+        $uniquedMarketIds = $stocks->unique('market_id');   //キャメルケースOK、スネークケース、パスカルケースNG
+        $uniquedIndustryIds = $stocks->unique('industry_id');   //キャメルケースOK、スネークケース、パスカルケースNG
+        return view('dashboard', compact('stocks','uniquedMarketIds','uniquedIndustryIds'));
     }
 
     /**
@@ -58,9 +59,32 @@ class StockController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show_markets($id)
     {
         //
+        $stocks = Stock::all();
+        $uniquedMarketIds = $stocks->unique('market_id');   //キャメルケースOK、スネークケース、パスカルケースNG
+        $uniquedIndustryIds = $stocks->unique('industry_id');   //キャメルケースOK、スネークケース、パスカルケースNG
+
+        $stock = Stock::where('id', $id)->first();
+        $stocks = $stock::where('market_id', $stock->market_id)->get();
+        //dd($stocks);
+        return view('dashboard', compact('stocks','uniquedMarketIds','uniquedIndustryIds'));
+        //return redirect('/dashboard');
+    }
+
+    public function show_industries($id)
+    {
+        //
+        $stocks = Stock::all();
+        $uniquedMarketIds = $stocks->unique('market_id');   //キャメルケースOK、スネークケース、パスカルケースNG
+        $uniquedIndustryIds = $stocks->unique('industry_id');   //キャメルケースOK、スネークケース、パスカルケースNG
+
+        $stock = Stock::where('id', $id)->first();
+        $stocks = $stock::where('industry_id', $stock->industry_id)->get();
+        //dd($stocks);
+        return view('dashboard', compact('stocks','uniquedMarketIds','uniquedIndustryIds'));
+        //return redirect('/dashboard');
     }
 
     /**
