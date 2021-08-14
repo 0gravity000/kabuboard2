@@ -1,4 +1,4 @@
-@props(['stocks','uniquedMarketIds','uniquedIndustryIds'])
+@props(['stocks','sortedStocks','uniquedMarketIds','uniquedIndustryIds'])
 
 <div class="container">
      <div class="row align-items-start">
@@ -43,12 +43,12 @@
                          </tr>
                     </thead>
                     <tbody>
-                         @foreach($stocks as $stock)
+                         @foreach($sortedStocks as $sortedStock)
                          <tr>
-                         <td>{{$stock->code}}</td>
-                         <td>{{$stock->name}}</td>
-                         <td>{{$stock->market->name}}</td>
-                         <td>{{$stock->industry->name}}</td>
+                         <td>{{$sortedStock->code}}</td>
+                         <td>{{$sortedStock->name}}</td>
+                         <td>{{$sortedStock->market->name}}</td>
+                         <td>{{$sortedStock->industry->name}}</td>
                          </tr>
                          @endforeach
                     </tbody>

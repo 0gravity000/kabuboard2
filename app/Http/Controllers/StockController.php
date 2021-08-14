@@ -29,7 +29,8 @@ class StockController extends Controller
         $stocks = Stock::all();
         $uniquedMarketIds = $stocks->unique('market_id');   //キャメルケースOK、スネークケース、パスカルケースNG
         $uniquedIndustryIds = $stocks->unique('industry_id');   //キャメルケースOK、スネークケース、パスカルケースNG
-        return view('dashboard', compact('stocks','uniquedMarketIds','uniquedIndustryIds'));
+        $sortedStocks = $stocks;
+        return view('dashboard', compact('stocks','sortedStocks','uniquedMarketIds','uniquedIndustryIds'));
     }
 
     /**
@@ -67,9 +68,9 @@ class StockController extends Controller
         $uniquedIndustryIds = $stocks->unique('industry_id');   //キャメルケースOK、スネークケース、パスカルケースNG
 
         $stock = Stock::where('id', $id)->first();
-        $stocks = $stock::where('market_id', $stock->market_id)->get();
+        $sortedStocks = $stock::where('market_id', $stock->market_id)->get();   //キャメルケースOK、スネークケース、パスカルケースNG
         //dd($stocks);
-        return view('dashboard', compact('stocks','uniquedMarketIds','uniquedIndustryIds'));
+        return view('dashboard', compact('stocks','sortedStocks','uniquedMarketIds','uniquedIndustryIds'));
         //return redirect('/dashboard');
     }
 
@@ -81,9 +82,9 @@ class StockController extends Controller
         $uniquedIndustryIds = $stocks->unique('industry_id');   //キャメルケースOK、スネークケース、パスカルケースNG
 
         $stock = Stock::where('id', $id)->first();
-        $stocks = $stock::where('industry_id', $stock->industry_id)->get();
+        $sortedStocks = $stock::where('industry_id', $stock->industry_id)->get();
         //dd($stocks);
-        return view('dashboard', compact('stocks','uniquedMarketIds','uniquedIndustryIds'));
+        return view('dashboard', compact('stocks','sortedStocks','uniquedMarketIds','uniquedIndustryIds'));
         //return redirect('/dashboard');
     }
 
