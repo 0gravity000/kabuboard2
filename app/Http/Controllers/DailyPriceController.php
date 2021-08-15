@@ -54,7 +54,7 @@ class DailyPriceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DailyPrice  $code
+     * @param  \App\Models\DailyPrice
      * @return \Illuminate\Http\Response
      */
     public function show_code()

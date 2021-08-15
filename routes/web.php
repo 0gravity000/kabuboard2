@@ -35,6 +35,7 @@ Route::get('/dailyprice', [DailyPriceController::class, 'index'])->name('dailypr
 Route::POST('/dailyprice/show/code', [DailyPriceController::class, 'show_code'])->name('dailyprice_code');
 
 Route::get('/dailyvolume', [DailyVolumeController::class, 'index'])->name('dailyvolume');
+Route::POST('/dailyvolume/show/code', [DailyVolumeController::class, 'show_code'])->name('dailyvolume_code');
 
 Route::get('/debug', [DailyPriceController::class, 'debug'])->name('debug');
 

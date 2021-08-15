@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Stock;
 use App\Models\DailyVolume;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DailyVolumeController extends Controller
 {
@@ -18,7 +20,6 @@ class DailyVolumeController extends Controller
         $dailyvolumes = DailyVolume::all();
         $uniquedDates = $dailyvolumes->unique('date');   //キャメルケースOK、スネークケース、パスカルケースNG
         //dd($uniquedDates);
-        $dailyvolumes = DailyVolume::all();
         $dailyvolumes = DailyVolume::paginate(100);
         return view('dailyvolume', compact('dailyvolumes','uniquedDates'));
     }
@@ -50,9 +51,27 @@ class DailyVolumeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show_code()
     {
         //
+        //dd(request()->searchtext);
+        //dd(request());
+        $dailyvolumes = DailyVolume::all();
+        $uniquedDates = $dailyvolumes->unique('date');   //キャメルケースOK、スネークケース、パスカルケースNG
+        //dd($uniquedDates);
+        if (DB::table('stocks')->where('code', request()->searchtext)->exists()) {
+            $stock = Stock::where('code', request()->searchtext)->first();
+            $dailyvolumes = DailyVolume::where('stock_id', $stock->id)->paginate(100);
+            //dd($dailyvolumes);
+            session()->flash('flash_message', '');
+        } elseif(request()->searchtext == null) {
+            session()->flash('flash_message', '');
+            return redirect('/dailyvolume');
+        } else {
+            session()->flash('flash_message', '該当コードはありません。');
+            return redirect('/dailyvolume');
+        }
+        return view('dailyvolume', compact('dailyvolumes','uniquedDates'));
     }
 
     /**

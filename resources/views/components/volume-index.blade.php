@@ -5,7 +5,24 @@
           {{ $dailyvolumes->links() }}
 
           <div class="col-3">
-               <ul>
+               <form method="POST" action="/dailyvolume/show/code">
+                    @csrf
+                    <div class="input-group rounded">
+                         <input type="search" class="form-control rounded" placeholder="Search code" name="searchtext" />
+                         <button type="submit">
+                              <span class="input-group-text border-0" id="search-addon">
+                                   <i class="bi bi-search"></i>
+                              </span>
+                         </button>
+                    </div>
+               </form>
+               @if (session('flash_message'))
+               <div class="flash_message alert alert-danger">
+               {{ session('flash_message') }}
+               </div>
+               @endif
+
+               <ul class="mt-3">
                     <ul>日付</ul>
                     @foreach($uniquedDates as $uniquedDate)
                     <li>
