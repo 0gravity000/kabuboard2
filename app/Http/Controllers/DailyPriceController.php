@@ -75,7 +75,7 @@ class DailyPriceController extends Controller
             return redirect('/dailyprice');
         } else {
             session()->flash('flash_message', '該当コードはありません。');
-            $dailyprices = DailyPrice::paginate(100);
+            return redirect('/dailyprice');
         }
         return view('dailyprice', compact('dailyprices','uniquedDates'));
     }
