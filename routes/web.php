@@ -32,6 +32,8 @@ Route::get('/dashboard/show/markets/{marketid}', [StockController::class, 'show_
 Route::get('/dashboard/show/industries/{industryid}', [StockController::class, 'show_industries'])->name('dashboard_industries');
 
 Route::get('/dailyprice', [DailyPriceController::class, 'index'])->name('dailyprice');
+Route::POST('/dailyprice/show/code', [DailyPriceController::class, 'show_code'])->name('dailyprice_code');
+
 Route::get('/dailyvolume', [DailyVolumeController::class, 'index'])->name('dailyvolume');
 
 Route::get('/debug', [DailyPriceController::class, 'debug'])->name('debug');

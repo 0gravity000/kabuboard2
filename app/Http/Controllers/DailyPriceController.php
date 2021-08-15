@@ -10,6 +10,7 @@ use App\Models\Market;
 use App\Models\Industry;
 use Goutte;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class DailyPriceController extends Controller
 {
@@ -25,7 +26,6 @@ class DailyPriceController extends Controller
         $dailyprices = DailyPrice::all();
         $uniquedDates = $dailyprices->unique('date');   //キャメルケースOK、スネークケース、パスカルケースNG
         //dd($uniquedDates);
-        $dailyprices = DailyPrice::all();
         $dailyprices = DailyPrice::paginate(100);
         return view('dailyprice', compact('dailyprices','uniquedDates'));
     }
@@ -54,12 +54,30 @@ class DailyPriceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DailyPrice  $dailyPrice
+     * @param  \App\Models\DailyPrice  $code
      * @return \Illuminate\Http\Response
      */
-    public function show(DailyPrice $dailyPrice)
+    public function show_code()
     {
         //
+        //dd(request()->searchtext);
+        //dd(request());
+        $dailyprices = DailyPrice::all();
+        $uniquedDates = $dailyprices->unique('date');   //キャメルケースOK、スネークケース、パスカルケースNG
+        //dd($uniquedDates);
+        if (DB::table('stocks')->where('code', request()->searchtext)->exists()) {
+            $stock = Stock::where('code', request()->searchtext)->first();
+            $dailyprices = DailyPrice::where('stock_id', $stock->id)->paginate(100);
+            //dd($dailyprices);
+            session()->flash('flash_message', '');
+        } elseif(request()->searchtext == null) {
+            session()->flash('flash_message', '');
+            return redirect('/dailyprice');
+        } else {
+            session()->flash('flash_message', '該当コードはありません。');
+            $dailyprices = DailyPrice::paginate(100);
+        }
+        return view('dailyprice', compact('dailyprices','uniquedDates'));
     }
 
     /**
