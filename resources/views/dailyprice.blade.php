@@ -3,7 +3,6 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             株価
         </h2>
-        <a href="/debug">debug</a>
     </x-slot>
 
     <div class="py-12">

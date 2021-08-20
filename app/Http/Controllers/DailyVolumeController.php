@@ -7,8 +7,15 @@ use App\Models\DailyVolume;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use App\Models\SignalDailyVolume;
+
 class DailyVolumeController extends Controller
 {
+
+    public function debug()
+    {
+    }
+
     /**
      * Display a listing of the resource.
      *

@@ -46,6 +46,10 @@ class StoreDialySignalAkasanpeToDB
         for ($idx=0; $idx < $count; $idx++) { 
             $stock = Stock::find($idx+1);
             //dd($stock);
+            if (DailyPrice::where('stock_id', $stock->id)->orderBy('updated_at', 'desc')->doesntExist()) { //存在チェック
+                //dd('doesnt exsist :'.$stock->id );
+                continue;
+            }
             $dailyprices = DailyPrice::where('stock_id', $stock->id)->orderBy('updated_at', 'desc')->get();
             //dd($dailyprices[0]);
             //赤三兵チェック 3日連続陽線

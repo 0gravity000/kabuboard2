@@ -14,4 +14,9 @@ class Signal extends Model
     {
         return $this->hasMany('App\Models\SignalDailyPrice');
     }    
+
+    public function signal_daily_volumes()
+    {
+        return $this->hasMany('App\Models\SignalDailyVolume');
+    }    
 }
