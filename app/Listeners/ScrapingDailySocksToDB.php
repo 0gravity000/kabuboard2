@@ -13,7 +13,10 @@ use App\Models\Market;
 use App\Models\Industry;
 use Goutte;
 use Illuminate\Support\Facades\Log;
-
+use Carbon\Carbon;
+use DateTimeZone;
+use App\Models\Holiday;
+use Illuminate\Support\Facades\DB;
 
 class ScrapingDailySocksToDB
 {
@@ -35,7 +38,15 @@ class ScrapingDailySocksToDB
      */
     public function handle(DialyStocksCheck $event)
     {
-        //
+        //祝日かチェックする
+        $now = Carbon::now(new DateTimeZone('Asia/Tokyo'));
+        $fomatted_now = $now->format('Y-m-d');
+        //dd($fomatted_now);
+        if (DB::table('holidays')->where('holiday', $fomatted_now)->exists()) {
+            # 何もせず終了
+            return;
+        }
+
         $stocks = Stock::all();
         //stocks分ループ
         foreach ($stocks as $stock) {
