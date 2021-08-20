@@ -9,6 +9,7 @@ use App\Events\DialyMeigarasCheck;
 use App\Events\DialyStocksCheck;
 use App\Events\DialyExtraStocksCheck;
 use App\Events\DialySignalAkasanpeCheck;
+use App\Events\DialySignalKurosanpeCheck;
 
 class Kernel extends ConsoleKernel
 {
@@ -33,9 +34,13 @@ class Kernel extends ConsoleKernel
             event(new DialyStocksCheck());
         })->weekdays()->at('15:30');
 
-        $schedule->call(function () {   //処理時間：?
+        $schedule->call(function () {   //処理時間：3分くらい
             event(new DialySignalAkasanpeCheck());
         })->weekdays()->at('16:00');
+        $schedule->call(function () {   //処理時間：3分くらい
+            event(new DialySignalKurosanpeCheck());
+        })->weekdays()->at('16:10');
+
 
         $schedule->call(function () {
             event(new DialyMeigarasCheck());
