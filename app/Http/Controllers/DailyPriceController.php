@@ -11,9 +11,15 @@ use App\Models\Industry;
 use Goutte;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+use App\Models\SignalDailyPrice;
 
 class DailyPriceController extends Controller
 {
+
+    public function debug()
+    {
+
+    }
 
     /**
      * Display a listing of the resource.

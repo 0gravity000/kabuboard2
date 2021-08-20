@@ -8,6 +8,7 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Events\DialyMeigarasCheck;
 use App\Events\DialyStocksCheck;
 use App\Events\DialyExtraStocksCheck;
+use App\Events\DialySignalAkasanpeCheck;
 
 class Kernel extends ConsoleKernel
 {
@@ -31,6 +32,10 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {   //処理時間：30分くらい
             event(new DialyStocksCheck());
         })->weekdays()->at('15:30');
+
+        $schedule->call(function () {   //処理時間：?
+            event(new DialySignalAkasanpeCheck());
+        })->weekdays()->at('16:00');
 
         $schedule->call(function () {
             event(new DialyMeigarasCheck());

@@ -47,11 +47,17 @@ class DeleteDailyExtraDBSocks
         $daily_prices = DailyPrice::where('date', '<', $branchday)->get();
         foreach ($daily_prices as $daily_price) {
             $daily_price->delete();
+
+            //signal_daily_pricesテーブルのデータも合わせて要削除
+
         }
         //daily_volumes テーブルの余分なレコードを削除
         $daily_volumes = DailyVolume::where('date', '<', $branchday)->get();
         foreach ($daily_volumes as $daily_volume) {
             $daily_volume->delete();
+
+            //signal_daily_volumesテーブルのデータも合わせて要削除
+
         }
         Log::info('finish ScrapingDailySocksToDB.php');
     }
