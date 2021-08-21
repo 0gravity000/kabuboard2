@@ -40,6 +40,7 @@ Route::POST('/dailyvolume/show/code', [DailyVolumeController::class, 'show_code'
 
 Route::get('/signalakasan', [SignalController::class, 'index_akasan'])->name('signalakasan');
 Route::get('/signalkurosan', [SignalController::class, 'index_kurosan'])->name('signalkurosan');
+Route::get('/signalvolume', [SignalController::class, 'index_volume'])->name('signalvolume');
 
 //Route::get('/debug', [DailyPriceController::class, 'debug'])->name('debug');
 Route::get('/debug', [DailyVolumeController::class, 'debug'])->name('debug');

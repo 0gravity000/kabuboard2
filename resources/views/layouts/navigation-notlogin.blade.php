@@ -27,6 +27,9 @@
                     <x-nav-link :href="route('signalkurosan')" :active="request()->routeIs('signalkurosan')">
                         黒三兵
                     </x-nav-link>
+                    <x-nav-link :href="route('signalvolume')" :active="request()->routeIs('signalvolume')">
+                        出来高急増
+                    </x-nav-link>
                 </div>
             </div>
 

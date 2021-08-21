@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\SignalDailyPrice;
+use App\Models\SignalDailyVolume;
 use App\Models\Stock;
 
 class SignalController extends Controller
@@ -32,6 +33,15 @@ class SignalController extends Controller
         $signalkurosans = SignalDailyPrice::where('signal_id', 2)->get();
         //dd($signalkurosans);
         return view('signalkurosan', compact('signalkurosans'));
+    }
+    public function index_volume()
+    {
+        //
+        //$stocks = Stock::where('id', 1)->get();
+        //dd($stocks);
+        $signalvolumes = SignalDailyVolume::where('signal_id', 3)->get();
+        //dd($signalvolumes);
+        return view('signalvolume', compact('signalvolumes'));
     }
 
     /**
