@@ -42,7 +42,8 @@ Route::get('/signalakasan', [SignalController::class, 'index_akasan'])->name('si
 Route::get('/signalkurosan', [SignalController::class, 'index_kurosan'])->name('signalkurosan');
 Route::get('/signalvolume', [SignalController::class, 'index_volume'])->name('signalvolume');
 
+Route::get('/debug', [SignalController::class, 'debug'])->name('debug');
 //Route::get('/debug', [DailyPriceController::class, 'debug'])->name('debug');
-Route::get('/debug', [DailyVolumeController::class, 'debug'])->name('debug');
+//Route::get('/debug', [DailyVolumeController::class, 'debug'])->name('debug');
 
 require __DIR__.'/auth.php';
