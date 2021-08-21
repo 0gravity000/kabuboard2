@@ -20,10 +20,18 @@ class SignalController extends Controller
         //$stocks = Stock::where('id', 1)->get();
         //dd($stocks);
         $signalakasans = SignalDailyPrice::where('signal_id', 1)->get();
-        $uniquedDates = $signalakasans->unique('date');   //キャメルケースOK、スネークケース、パスカルケースNG
-
         //dd($signalakasans);
         return view('signalakasan', compact('signalakasans'));
+    }
+
+    public function index_kurosan()
+    {
+        //
+        //$stocks = Stock::where('id', 1)->get();
+        //dd($stocks);
+        $signalkurosans = SignalDailyPrice::where('signal_id', 2)->get();
+        //dd($signalkurosans);
+        return view('signalkurosan', compact('signalkurosans'));
     }
 
     /**

@@ -39,6 +39,7 @@ Route::get('/dailyvolume', [DailyVolumeController::class, 'index'])->name('daily
 Route::POST('/dailyvolume/show/code', [DailyVolumeController::class, 'show_code'])->name('dailyvolume_code');
 
 Route::get('/signalakasan', [SignalController::class, 'index_akasan'])->name('signalakasan');
+Route::get('/signalkurosan', [SignalController::class, 'index_kurosan'])->name('signalkurosan');
 
 //Route::get('/debug', [DailyPriceController::class, 'debug'])->name('debug');
 Route::get('/debug', [DailyVolumeController::class, 'debug'])->name('debug');
