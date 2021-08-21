@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('dailyvolume')" :active="request()->routeIs('dailyvolume')">
                         出来高
                     </x-nav-link>
+                    <x-nav-link :href="route('signalakasan')" :active="request()->routeIs('signalakasan')">
+                        赤三兵
+                    </x-nav-link>
                 </div>
             </div>
 

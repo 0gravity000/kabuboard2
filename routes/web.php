@@ -3,6 +3,7 @@
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\DailyPriceController;
 use App\Http\Controllers\DailyVolumeController;
+use App\Http\Controllers\SignalController;
 
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\CrapIndex;
@@ -36,6 +37,8 @@ Route::POST('/dailyprice/show/code', [DailyPriceController::class, 'show_code'])
 
 Route::get('/dailyvolume', [DailyVolumeController::class, 'index'])->name('dailyvolume');
 Route::POST('/dailyvolume/show/code', [DailyVolumeController::class, 'show_code'])->name('dailyvolume_code');
+
+Route::get('/signalakasan', [SignalController::class, 'index_akasan'])->name('signalakasan');
 
 //Route::get('/debug', [DailyPriceController::class, 'debug'])->name('debug');
 Route::get('/debug', [DailyVolumeController::class, 'debug'])->name('debug');
