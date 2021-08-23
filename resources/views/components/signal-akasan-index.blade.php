@@ -1,4 +1,4 @@
-@props(['signalakasans'])
+@props(['dailyprices'])
 
 <div class="container">
      <div class="row align-items-start">
@@ -17,12 +17,12 @@
                     </thead>
 
                     <tbody>
-                         @foreach($signalakasans as $signalakasan)
+                         @foreach($dailyprices as $dailyprice)
                          <tr>
-                         <td>{{$signalakasan->daily_price->stock->code}}</td>
-                         <td>{{$signalakasan->daily_price->stock->name}}</td>
-                         <td>{{$signalakasan->daily_price->date}}</td>
-                         <td>{{$signalakasan->daily_price->price}}</td>
+                         <td>{{$dailyprice->stock->code}}</td>
+                         <td>{{$dailyprice->stock->name}}</td>
+                         <td>{{$dailyprice->date}}</td>
+                         <td>{{$dailyprice->price}}</td>
                          </tr>
                          @endforeach
                     </tbody>

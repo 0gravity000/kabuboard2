@@ -32,8 +32,11 @@ class SignalController extends Controller
         //$stocks = Stock::where('id', 1)->get();
         //dd($stocks);
         $signalakasans = SignalDailyPrice::where('signal_id', 1)->get();
-        //dd($signalakasans);
-        return view('signalakasan', compact('signalakasans'));
+        $plucked = $signalakasans->pluck('daily_price_id');
+        //dd($$plucked);
+        $dailyprices = DailyPrice::whereIn('id', $plucked)->orderBy('date', 'desc')->get();
+        //dd($dailyprices);
+        return view('signalakasan', compact('dailyprices'));
     }
 
     public function index_kurosan()
@@ -42,8 +45,9 @@ class SignalController extends Controller
         //$stocks = Stock::where('id', 1)->get();
         //dd($stocks);
         $signalkurosans = SignalDailyPrice::where('signal_id', 2)->get();
-        //dd($signalkurosans);
-        return view('signalkurosan', compact('signalkurosans'));
+        $plucked = $signalkurosans->pluck('daily_price_id');
+        $dailyprices = DailyPrice::whereIn('id', $plucked)->orderBy('date', 'desc')->get();
+        return view('signalkurosan', compact('dailyprices'));
     }
     public function index_volume()
     {
@@ -51,8 +55,9 @@ class SignalController extends Controller
         //$stocks = Stock::where('id', 1)->get();
         //dd($stocks);
         $signalvolumes = SignalDailyVolume::where('signal_id', 3)->get();
-        //dd($signalvolumes);
-        return view('signalvolume', compact('signalvolumes'));
+        $plucked = $signalvolumes->pluck('daily_volume_id');
+        $dailyvolumes = DailyVolume::whereIn('id', $plucked)->orderBy('date', 'desc')->get();
+        return view('signalvolume', compact('dailyvolumes'));
     }
 
     /**

@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
 
-                    <x-signal-volume-index :signalvolumes="$signalvolumes" />
+                    <x-signal-volume-index :dailyvolumes="$dailyvolumes" />
 
                 </div>
             </div>
