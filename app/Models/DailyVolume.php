@@ -14,4 +14,9 @@ class DailyVolume extends Model
     {
         return $this->belongsTo('App\Models\Stock');
     }
+
+    public function signal_daily_volumes()
+    {
+        return $this->hasMany('App\Models\SignalDailyVolume');
+    }    
 }
