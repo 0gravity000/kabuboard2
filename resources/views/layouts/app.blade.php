@@ -19,6 +19,11 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+
+         <!-- Google AdSense -->   
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6897468555074184"
+        crossorigin="anonymous"></script>
+   
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
