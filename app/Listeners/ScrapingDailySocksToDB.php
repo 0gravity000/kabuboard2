@@ -75,8 +75,8 @@ class ScrapingDailySocksToDB
 
             //毎分用データ取得
             //現在値
-            //#root > main > div > div > div.XuqDlHPN > div:nth-child(2) > section._1zZriTjI._2l2sDX5w > div._1nb3c4wQ > header > div.nOmR5zWz > span > span > span
-            $price = $crawler->filter('#root > main > div > div > div.XuqDlHPN > div:nth-child(2) > section._1zZriTjI._2l2sDX5w > div._1nb3c4wQ > header > div.nOmR5zWz > span > span > span')->each(function ($node) {  //戻り値は配列
+            //#root > main > div > div > div.XuqDlHPN > div:nth-child(3) > section._1zZriTjI._2l2sDX5w > div._1nb3c4wQ > header > div.nOmR5zWz > span > span > span
+            $price = $crawler->filter('#root > main > div > div > div.XuqDlHPN > div:nth-child(3) > section._1zZriTjI._2l2sDX5w > div._1nb3c4wQ > header > div.nOmR5zWz > span > span > span')->each(function ($node) {  //戻り値は配列
                 $price_temp = $node->text();
                 return $price_temp;
             });
