@@ -18,6 +18,8 @@ use DateTimeZone;
 use App\Models\Holiday;
 use Illuminate\Support\Facades\DB;
 
+use Illuminate\Support\Facades\Storage;
+
 class ScrapingDailySocksToDB
 {
     /**
@@ -131,6 +133,20 @@ class ScrapingDailySocksToDB
                     'volume' => floatval(str_replace(',','',$volume)),
                 ]
             ); 
+
+            //上記の内容をファイルに書き出し DBは10日分で削除するためファイルに日々のデータをファイルに保存しておく
+            $tmp_data = Storage::append($date.'_stock_datas.txt', 
+                //$stock->id .','.
+                Stock::where('id', $stock->id)->first()->name .','.
+                $date .','.
+                floatval(str_replace(',','',$price[0])) .','.
+                floatval(str_replace(',','',$pre_end_price)) .','.
+                floatval(str_replace(',','',$start_price)) .','.
+                floatval(str_replace(',','',$price[0])) .','.
+                floatval(str_replace(',','',$highest_price)) .','.
+                floatval(str_replace(',','',$lowest_price)) .','.
+                floatval(str_replace(',','',$volume))
+            );
 
         }   //stocks分ループ END
         Log::info('finish ScrapingDailySocksToDB.php');
