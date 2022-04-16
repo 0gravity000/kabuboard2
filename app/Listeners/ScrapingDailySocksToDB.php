@@ -145,7 +145,7 @@ class ScrapingDailySocksToDB
                 floatval(str_replace(',','',$price[0])) .','.
                 floatval(str_replace(',','',$highest_price)) .','.
                 floatval(str_replace(',','',$lowest_price)) .','.
-                floatval(str_replace(',','',$volume))
+                floatval(str_replace(',','',$volume)) .'\n'
             );
 
         }   //stocks分ループ END
